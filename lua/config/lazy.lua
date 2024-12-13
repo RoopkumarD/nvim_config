@@ -28,4 +28,7 @@ require("lazy").setup({
     -- import your plugins
     { import = "plugin" },
   },
+  change_detection = {
+    notify = false,
+  },
 })

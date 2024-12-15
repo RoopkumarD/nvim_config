@@ -5,6 +5,7 @@ return {
     priority = 1000,
     config = function()
       require("catppuccin").setup({
+        --[[
         color_overrides = {
           mocha = {
             base = "#000000",
@@ -12,6 +13,7 @@ return {
             crust = "#131313",
           },
         }
+        ]] --
       })
 
       vim.cmd.colorscheme "catppuccin-mocha"

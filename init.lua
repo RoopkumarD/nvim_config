@@ -25,3 +25,27 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = "Move focus to right window"
 vim.keymap.set('n', '<leader><leader>x', '<cmd>source %<cr>')
 
 vim.keymap.set('n', '<leader>ta', '<cmd>!terminator &<cr>', { desc = "Opens new terminal with same pwd" })
+
+vim.keymap.set('n', '<leader>st', '<cmd>terminal<cr>', { desc = "Terminal session inside neovim" })
+
+local function switch_to_tab()
+  -- Capture user input (a single number)
+  local number = vim.fn.getcharstr()
+  if tonumber(number) then
+    -- Switch to the specified tab
+    vim.cmd("tabnext " .. number)
+  else
+    print("Invalid input: not a number")
+  end
+end
+
+vim.api.nvim_create_autocmd({ 'TermOpen' }, {
+  callback = function()
+    local buffnr = vim.api.nvim_get_current_buf()
+    -- vim.keymap.set('t', '<C-n>', [[<C-\><C-n>]], { desc = "Exit terminal mode", buffer = buffnr })
+    vim.keymap.set('t', '<C-s>', switch_to_tab, { desc = "Switch tabs in terminal mode", buffer = buffnr })
+  end
+})
+
+-- printing tables
+-- vim.print(require("cmp_nvim_lsp").default_capabilities())

@@ -16,16 +16,13 @@ vim.o.formatoptions = "jtcroql"
 -- lazy package manager
 require("config.lazy")
 
+-- Oil Nvim
+require("config.oil")
+
 -- keymaps
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = "Move focus to left window" })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = "Move focus to below window" })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = "Move focus to above window" })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = "Move focus to right window" })
+require("keymap")
 
-vim.keymap.set('n', '<leader><leader>x', '<cmd>source %<cr>')
-
-vim.keymap.set('n', '<leader>ta', '<cmd>!terminator &<cr>', { desc = "Opens new terminal with same pwd" })
-
+--[[
 vim.keymap.set('n', '<leader>st', '<cmd>terminal<cr>', { desc = "Terminal session inside neovim" })
 
 local function switch_to_tab()
@@ -42,10 +39,11 @@ end
 vim.api.nvim_create_autocmd({ 'TermOpen' }, {
   callback = function()
     local buffnr = vim.api.nvim_get_current_buf()
-    -- vim.keymap.set('t', '<C-n>', [[<C-\><C-n>]], { desc = "Exit terminal mode", buffer = buffnr })
+    -- vim.keymap.set('t', '<C-n>', [[<C-\><C-n>\]\], { desc = "Exit terminal mode", buffer = buffnr })
     vim.keymap.set('t', '<C-s>', switch_to_tab, { desc = "Switch tabs in terminal mode", buffer = buffnr })
   end
 })
+]] --
 
 -- printing tables
 -- vim.print(require("cmp_nvim_lsp").default_capabilities())

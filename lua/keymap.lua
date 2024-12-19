@@ -1,11 +1,12 @@
 vim.keymap.set('n', '<leader><leader>x', '<cmd>source %<cr>')
 
+-- too many keystrokes will use harpoon as will select subset of buffer
 -- buffer
-vim.keymap.set("n", "<leader>b", ":b ", { desc = "Switch buffer with leader key" })
+-- vim.keymap.set("n", "<leader>b", ":b ", { desc = "Switch buffer with leader key" })
 -- here it pressing <leader>b will write `:b ` which takes me
 -- to command line with :b already written. So i only have to
 -- mention which buffer to go and press enter
-vim.keymap.set("n", "<leader>ls", "<cmd>ls<cr>", { desc = "Listing out buffers" })
+-- vim.keymap.set("n", "<leader>ls", "<cmd>ls<cr>", { desc = "Listing out buffers" })
 
 -- window
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = "Move focus to left window" })

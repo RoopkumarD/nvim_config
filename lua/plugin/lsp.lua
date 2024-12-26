@@ -26,6 +26,7 @@ return {
       if pcall(require, "cmp_nvim_lsp") then
         capabilities = require("cmp_nvim_lsp").default_capabilities()
       end
+      ]] --
 
       local servers = {
         lua_ls = true,
@@ -37,13 +38,14 @@ return {
         if config == true then
           config = {}
         end
+        --[[
         config = vim.tbl_deep_extend("force", {}, {
           capabilities = capabilities,
         }, config)
+        ]]--
 
         lspconfig[name].setup(config)
       end
-      ]] --
 
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)

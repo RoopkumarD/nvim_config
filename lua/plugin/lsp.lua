@@ -13,11 +13,14 @@ return {
           },
         },
       },
-      "hrsh7th/cmp-nvim-lsp"
+      -- "hrsh7th/cmp-nvim-lsp"
     },
     config = function()
       local lspconfig = require("lspconfig")
 
+      -- I want to write code without auto complete
+      -- and learn to internalize api so it won't break my focus/flow
+      --[[
       -- introducing neovim lsp capabilities to each lsp server
       local capabilities = nil
       if pcall(require, "cmp_nvim_lsp") then
@@ -40,6 +43,7 @@ return {
 
         lspconfig[name].setup(config)
       end
+      ]] --
 
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)

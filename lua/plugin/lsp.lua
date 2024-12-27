@@ -42,7 +42,7 @@ return {
         config = vim.tbl_deep_extend("force", {}, {
           capabilities = capabilities,
         }, config)
-        ]]--
+        ]] --
 
         lspconfig[name].setup(config)
       end
@@ -51,6 +51,8 @@ return {
         callback = function(args)
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           if not client then return end
+
+          vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, { desc = "Get [L]sp [D]efinition" })
 
           -- format on save
           if client.supports_method("textDocuement/formatting") then

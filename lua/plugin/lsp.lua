@@ -52,7 +52,8 @@ return {
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           if not client then return end
 
-          vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, { desc = "Get [L]sp [D]efinition" })
+          vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "[G]oto [D]efinition" })
+          vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Get [L]ine [D]iagnostic" })
 
           -- format on save
           if client.supports_method("textDocuement/formatting") then

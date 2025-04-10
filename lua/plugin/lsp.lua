@@ -32,6 +32,7 @@ return {
         lua_ls = true,
         pyright = true,
         clangd = true,
+        tinymist = true,
       }
 
       for name, config in pairs(servers) do

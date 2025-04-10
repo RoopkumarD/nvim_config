@@ -18,3 +18,8 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = "Move focus to right window"
 vim.keymap.set('n', '-', '<cmd>Oil --float<cr>', { desc = "Open parent directory" })
 
 vim.keymap.set('n', '<leader>ta', '<cmd>!terminator &<cr>', { desc = "Opens new terminal with same pwd" })
+
+vim.keymap.set('n', '<leader>id', function()
+  local date = os.date("%Y-%m-%d")
+  vim.api.nvim_put({ date }, 'c', true, true)
+end, { desc = "Insert current date" })
